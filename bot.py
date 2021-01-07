@@ -26,6 +26,8 @@ def short(m):
             keyword = urllib.parse.quote_plus(m.text.split()[2])
         else:
             keyword = ''
+        if not link.startswith("http"):
+            link = urllib.parse.quote_plus("http://"+link)
         url = 'https://' + DOMAIN + '/yourls-api.php?signature=' + SEC_SIG + '&action=shorturl&url=' + link + '&format=json&keyword=' + keyword
         print("QUERY: " + url)
         try:
